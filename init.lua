@@ -15,6 +15,7 @@ vim.opt.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"      -- avoid text shifting when LSP diagnostics appear
 vim.opt.updatetime = 250        -- faster diagnostics / cmp popups
+vim.opt.clipboard = "unnamedplus"
 
 -- 3. Plugins
 require("lazy").setup({
@@ -141,3 +142,11 @@ local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 vim.keymap.set("n", "<leader>pg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>tt", function()
+  vim.cmd("botright split")
+  vim.cmd("resize 15")          -- 15 lines tall; tweak to taste
+  vim.cmd("terminal")
+  vim.cmd("startinsert")        -- drop straight into insert mode
+end, { desc = "Open terminal at bottom" })
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]])
