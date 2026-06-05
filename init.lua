@@ -135,6 +135,40 @@ require("lazy").setup({
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
     } },
+    { "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",   -- file icons (needs a Nerd Font)
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = "Neotree",
+    keys = {
+      { "<leader>e", "<cmd>Neotree toggle<cr>",        desc = "Toggle file tree" },
+      { "<leader>o", "<cmd>Neotree focus<cr>",         desc = "Focus file tree" },
+      { "<leader>gs", "<cmd>Neotree git_status<cr>",   desc = "Git status view" },
+    },
+    opts = {
+      window = { width = 30 },
+      filesystem = {
+        follow_current_file = { enabled = true },   -- highlight the file you're editing
+        use_libuv_file_watcher = true,              -- auto-refresh on filesystem changes
+        filtered_items = {
+          visible = true,              -- show dotfiles by default
+          hide_dotfiles = false,       -- don't hide files starting with .
+          hide_gitignored = false,     -- don't hide files in .gitignore
+          hide_hidden = false,         -- (Windows-specific) show hidden attribute files
+          -- still hide these even when "show hidden" is on:
+          hide_by_name = {
+            ".DS_Store",
+            "thumbs.db",
+          },
+          never_show = {
+            ".git",                    -- the .git folder is rarely useful to browse
+          },
+        },
+      },
+    } },
 })
 
 -- 4. Keymaps
