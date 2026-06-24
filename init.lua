@@ -178,7 +178,7 @@ vim.keymap.set("n", "<leader>pg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>tt", function()
   vim.cmd("botright split")
-  vim.cmd("resize 15")          -- 15 lines tall; tweak to taste
+  vim.cmd("resize 30")          -- 15 lines tall; tweak to taste
   vim.cmd("terminal")
   vim.cmd("startinsert")        -- drop straight into insert mode
 end, { desc = "Open terminal at bottom" })
