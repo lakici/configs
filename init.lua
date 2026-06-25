@@ -169,6 +169,18 @@ require("lazy").setup({
         },
       },
     } },
+
+  -- Diffview: browse git history and diff files across commits/branches
+  { "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
+    keys = {
+      { "<leader>gh", "<cmd>DiffviewFileHistory<cr>",   desc = "Git history (repo)" },
+      { "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "Git history (current file)" },
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>",          desc = "Diff working tree vs HEAD" },
+      { "<leader>gc", "<cmd>DiffviewClose<cr>",         desc = "Close diffview" },
+    },
+    opts = {} },
 })
 
 -- 4. Keymaps
