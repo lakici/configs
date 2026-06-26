@@ -135,6 +135,27 @@ require("lazy").setup({
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
     } },
+
+  -- Antigravity integration
+  {
+    dir = vim.fn.stdpath("config") .. "/lua/antigravity",
+    name = "antigravity",
+    dependencies = { "folke/snacks.nvim" },
+    opts = {
+      binary = "agy",
+      split_side = "right", -- "right" or "left"
+      split_width_percentage = 0.30, -- percentage of columns
+    },
+    config = function(_, opts)
+      require("antigravity").setup(opts)
+    end,
+    keys = {
+      { "<leader>g",  nil,                            desc = "AI/Antigravity" },
+      { "<leader>gg", "<cmd>Antigravity<cr>",         desc = "Toggle Antigravity" },
+      { "<leader>gc", "<cmd>AntigravityContinue<cr>", desc = "Continue Antigravity" },
+      { "<leader>gr", "<cmd>AntigravityContinue<cr>", desc = "Resume Antigravity" },
+      { "<leader>gn", "<cmd>AntigravityNew<cr>",      desc = "New Antigravity project" },
+    } },
     { "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
